@@ -1,0 +1,7 @@
+C:\Users\maximilianw\Documents\Visual Studio 2017\Projects\Tetris by MX\Tetris by MX\bin\Debug\Tetris by MX.exe.config
+C:\Users\maximilianw\Documents\Visual Studio 2017\Projects\Tetris by MX\Tetris by MX\bin\Debug\Tetris by MX.exe
+C:\Users\maximilianw\Documents\Visual Studio 2017\Projects\Tetris by MX\Tetris by MX\bin\Debug\Tetris by MX.pdb
+C:\Users\maximilianw\Documents\Visual Studio 2017\Projects\Tetris by MX\Tetris by MX\obj\Debug\Tetris by MX.csprojAssemblyReference.cache
+C:\Users\maximilianw\Documents\Visual Studio 2017\Projects\Tetris by MX\Tetris by MX\obj\Debug\Tetris by MX.csproj.CoreCompileInputs.cache
+C:\Users\maximilianw\Documents\Visual Studio 2017\Projects\Tetris by MX\Tetris by MX\obj\Debug\Tetris by MX.exe
+C:\Users\maximilianw\Documents\Visual Studio 2017\Projects\Tetris by MX\Tetris by MX\obj\Debug\Tetris by MX.pdb
