@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Speech.Synthesis;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,178 +12,98 @@ namespace Tetris_by_MX
     {
         static void Main(string[] args)
         {
-            string b = "X";
+
 
             int x1, x2, x3, x4, x5, x6, x7, x8;
-            int M = 1;
 
             Console.SetWindowSize(21, 22);
             Console.BufferHeight = 22;
-            Console.BufferWidth = 22;
+            Console.BufferWidth = 21;
 
             ConsoleKeyInfo cki;
-            int mx, my;
-
-            // Startwerte
-            mx = Console.BufferWidth / 2;
-            my = 2;
-            // Block 1
-            x1 = x2 = x6 = x7 = x8 = 0;
-            x3 = x4 = x5 = 1;
-
-            // Block 2
-            //x1 = x3 = x4 = x5 = x6 = 0;
-            //x2 = x7 = x8 = 0;
 
 
-            int posX = mx;
-            int posY = my;
+            SpeechSynthesizer synthesizer = new SpeechSynthesizer();
+            synthesizer.Speak("Willkommen bei Tetris, Los gehts");
+          
 
-            //Start
-            if (x1 != 0)
-            {
-                Console.SetCursorPosition(mx - 1, my + 1);
-                Console.Write(b);
-            }
-            if (x2 != 0)
-            {
-                Console.SetCursorPosition(mx, my + 1);
-                Console.Write(b);
-            }
-            if (x3 != 0)
-            {
-                Console.SetCursorPosition(mx + 1, my + 1);
-                Console.Write(b);
-            }
-            if (x4 != 0)
-            {
-                Console.SetCursorPosition(mx - 1, my);
-                Console.Write(b);
-            }
-            if (x5 != 0)
-            {
-                Console.SetCursorPosition(mx + 1, my);
-                Console.Write(b);
-            }
-            if (x6 != 0)
-            {
-                Console.SetCursorPosition(mx - 1, my - 1);
-                Console.Write(b);
-            }
-            if (x7 != 0)
-            {
-                Console.SetCursorPosition(mx, my - 1);
-                Console.Write(b);
-            }
-            if (x8 != 0)
-            {
-                Console.SetCursorPosition(mx + 1, my - 1);
-                Console.Write(b);
-            }
 
-            // Drehen
+            // Zeit - Mess - Modul
+            Printer prints = new Printer();
+
+
+
+
+
+            // Drehen L R
+            LBlock LBlock = new LBlock();
+
             int counter = 0;
+
+            DateTime t1 = DateTime.Now;
+            int ms = t1.Millisecond;
+            DateTime t2 = DateTime.Now;
+            int ms2 = t2.Millisecond;
+            LBlock.startBlock();
             cki = Console.ReadKey();
-            while (Console.ReadKey() != new ConsoleKeyInfo())
+
+            int z = 0;
+
+            while (true)
             {
-
-
-                switch (cki.Key)
+                t2 = DateTime.Now;
+                int checker = (t2.Millisecond - t1.Millisecond + 1000) % 1000;
+                if (checker > 450)
                 {
-                    case ConsoleKey.RightArrow:
-                        if (counter == 0)
-                        {
-                            x1 = x3 = x4 = x5 = x6 = 0;
-                            x2 = x7 = x8 = 0;
-                            counter = 1;
-                        }
-                        else if (counter == 1)
-                        {
-                            x1 = x2 = x3 = x7 = x8 = 0;
-                            x4 = x5 = x6 = 1;
-                            counter = 2;
-
-                        }
-                        else if (counter == 2)
-                        {
-                            x3 = x4 = x5 = x6 = x8 = 0;
-                            x1 = x2 = x7 = 1;
-                            counter = 3;
-                        }
-                        else if (counter == 3)
-                        {
-                            x1 = x2 = x6 = x7 = x8 = 0;
-                            x3 = x4 = x5 = 1;
-                            counter = 0;
-                        }
-                        break;
-
+                    LBlock.travelDown();
+                    LBlock.printL();
+                    t1 = t2;
                 }
 
-                Console.SetCursorPosition(mx - 1, my + 1);
-                Console.Write("");
-                Console.SetCursorPosition(mx, my + 1);
-                Console.Write("");
-                Console.SetCursorPosition(mx + 1, my + 1);
-                Console.Write("");
-                Console.SetCursorPosition(mx - 1, my);
-                Console.Write("");
-                Console.SetCursorPosition(mx + 1, my);
-                Console.Write("");
-                Console.SetCursorPosition(mx - 1, my - 1);
-                Console.Write("");
-                Console.SetCursorPosition(mx, my - 1);
-                Console.Write("");
-                Console.SetCursorPosition(mx + 1, my - 1);
-                Console.Write("");
 
-                Console.SetCursorPosition(mx, my);
-                Console.Write(b);
+                if (Console.KeyAvailable)
+                {
 
-                if (x1 != 0)
-                {
-                    Console.SetCursorPosition(mx - 1, my + 1);
-                    Console.Write(b);
-                }
-                if (x2 != 0)
-                {
-                    Console.SetCursorPosition(mx, my + 1);
-                    Console.Write(b);
-                }
-                if (x3 != 0)
-                {
-                    Console.SetCursorPosition(mx + 1, my + 1);
-                    Console.Write(b);
-                }
-                if (x4 != 0)
-                {
-                    Console.SetCursorPosition(mx - 1, my);
-                    Console.Write(b);
-                }
-                if (x5 != 0)
-                {
-                    Console.SetCursorPosition(mx + 1, my);
-                    Console.Write(b);
-                }
-                if (x6 != 0)
-                {
-                    Console.SetCursorPosition(mx - 1, my - 1);
-                    Console.Write(b);
-                }
-                if (x7 != 0)
-                {
-                    Console.SetCursorPosition(mx, my - 1);
-                    Console.Write(b);
-                }
-                if (x8 != 0)
-                {
-                    Console.SetCursorPosition(mx + 1, my - 1);
-                    Console.Write(b);
-                }
+                    cki = Console.ReadKey();
 
+                    switch (cki.Key)
+                    {
+
+                        case ConsoleKey.D:
+                            LBlock.turnRight(counter);
+                            counter = LBlock.turnRight(counter);
+                            break;
+
+                        case ConsoleKey.A:
+                            LBlock.turnLeft(counter);
+                            counter = LBlock.turnLeft(counter);
+                            break;
+
+                        case ConsoleKey.RightArrow:
+                            LBlock.moveRight();
+                            break;
+
+                        case ConsoleKey.LeftArrow:
+                            LBlock.moveLeft();
+                            break;
+                    }
+
+                    LBlock.printL();
+
+
+
+                }
+                if (LBlock.checkHeight() == true)
+                {
+                    z++;
+                    if (z >2)
+                    {
+
+                    }
+                }
             }
+            
 
-            Console.ReadKey();
 
         }
     }
